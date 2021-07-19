@@ -7,7 +7,7 @@ grpc:
     plaintext: true
     max-retry-attempts: 10
   channels:
-    registra:
+    keymanager:
       address: localhost:50051
       plaintext: true
       max-retry-attempts: 10

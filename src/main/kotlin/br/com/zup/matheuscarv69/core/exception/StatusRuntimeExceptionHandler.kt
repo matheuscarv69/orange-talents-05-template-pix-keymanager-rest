@@ -30,6 +30,7 @@ class StatusRuntimeExceptionHandler : ExceptionHandler<StatusRuntimeException, H
             Status.NOT_FOUND.code -> Pair(HttpStatus.NOT_FOUND, statusDescription)
             Status.INVALID_ARGUMENT.code -> Pair(HttpStatus.BAD_REQUEST, "Dados da requisição estão inválidos")
             Status.ALREADY_EXISTS.code -> Pair(HttpStatus.UNPROCESSABLE_ENTITY, statusDescription)
+            Status.FAILED_PRECONDITION.code -> Pair(HttpStatus.BAD_REQUEST, statusDescription)
             // Caso seja capturado um erro que nao foi mapeado acima, eh retornado esse Internal Server Error
             else -> {
                 LOGGER.error("Erro inesperado '${exception.javaClass.name}' ao processar requisição", exception)
