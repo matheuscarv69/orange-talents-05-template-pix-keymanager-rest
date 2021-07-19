@@ -8,6 +8,7 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Post
 import io.micronaut.validation.Validated
+import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Inject
 import javax.validation.Valid
@@ -18,6 +19,8 @@ class RegistraChaveController(
     @Inject val registraClient: KeyManagerRegistraGrpcServiceGrpc.KeyManagerRegistraGrpcServiceBlockingStub
 ) {
 
+    private val LOGGER = LoggerFactory.getLogger(this::class.java)
+
     @Post("/{clienteId}/pix")
     fun registra(
         @PathVariable clienteId: UUID,
@@ -26,6 +29,7 @@ class RegistraChaveController(
 
         val grpcRequest = req.toModelGrpc(clienteId = clienteId)
 
+        LOGGER.info("Registrando chave pix do client ${grpcRequest.clienteId}")
         val grpcResponse = registraClient.registrar(grpcRequest)
 
         return HttpResponse.created(generateLocationHeader(clienteId = clienteId, pixId = grpcResponse.pixId))
