@@ -93,7 +93,7 @@ internal class StatusRuntimeExceptionHandlerTest {
 
         // cenario
         val mensagem = "Deu ruim aqui viu"
-        val internalServerError = StatusRuntimeException(Status.FAILED_PRECONDITION.withDescription(mensagem))
+        val internalServerError = StatusRuntimeException(Status.INTERNAL.withDescription(mensagem))
 
         // acao
         val httpResponse =
