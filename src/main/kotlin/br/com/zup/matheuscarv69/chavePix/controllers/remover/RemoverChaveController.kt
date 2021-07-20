@@ -27,7 +27,7 @@ class RemoverChaveController(
         LOGGER.info("Removendo chave pix: $pixId do cliente : $clienteId")
         val grpcResponse = removerClient.remover(grpcRequest)
 
-        return HttpResponse.ok(grpcResponse.mensagem)
+        return HttpResponse.ok()
     }
 
 
