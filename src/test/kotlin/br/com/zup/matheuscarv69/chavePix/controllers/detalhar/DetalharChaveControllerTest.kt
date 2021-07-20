@@ -65,7 +65,6 @@ internal class DetalharChaveControllerTest {
 
     }
 
-
     private fun detalharChaveRequest() = DetalharChavePixRequest
         .newBuilder()
         .setPixIdEClienteId(
