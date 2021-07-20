@@ -1,4 +1,4 @@
-package br.com.zup.matheuscarv69.entities.chavePix.controllers
+package br.com.zup.matheuscarv69.chavePix.controllers.registra
 
 import br.com.zup.matheuscarv69.KeyManagerRegistraGrpcServiceGrpc
 import br.com.zup.matheuscarv69.chavePix.controllers.registra.request.NovaChavePixRequest

@@ -1,6 +1,7 @@
 package br.com.zup.matheuscarv69.grpcClients
 
 import br.com.zup.matheuscarv69.KeyManagerDetalhaChaveServiceGrpc
+import br.com.zup.matheuscarv69.KeyManagerListaChavesServiceGrpc
 import br.com.zup.matheuscarv69.KeyManagerRegistraGrpcServiceGrpc
 import br.com.zup.matheuscarv69.KeyManagerRemoverServiceGrpc
 import io.grpc.ManagedChannel
@@ -22,4 +23,10 @@ class GrpcClientFactory {
     @Singleton
     fun detalharClientStub(@GrpcChannel("keymanager") channel: ManagedChannel) =
         KeyManagerDetalhaChaveServiceGrpc.newBlockingStub(channel)
+
+    @Singleton
+    fun listaClientStub(@GrpcChannel("keymanager") channel: ManagedChannel) =
+        KeyManagerListaChavesServiceGrpc.newBlockingStub(channel)
+
+
 }
