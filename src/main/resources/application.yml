@@ -1,13 +1,21 @@
 micronaut:
   application:
     name: keyManagerRest
+  server:
+    port: ${SERVER_PORT:8080}
 
+# config para os clientes grpc
 grpc:
   client:
     plaintext: true
     max-retry-attempts: 10
   channels:
     keymanager:
-      address: localhost:50051
+      address: '${KEY_MANAGER_HOST:localhost}:${KEY_MANAGER_PORT:50051}'
       plaintext: true
       max-retry-attempts: 10
+
+# config para o jackson nao mostrar as datas como timestamp - vai mostrar nesse formato agora 2021-07-19T20:18:32.08888
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false

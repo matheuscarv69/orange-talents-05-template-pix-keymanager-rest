@@ -51,6 +51,25 @@ internal class StatusRuntimeExceptionHandlerTest {
     }
 
     @Test
+    fun `Deve retornar 400 quando a StatusException for Failed_Precondition`() {
+
+        // cenario
+        val mensagem = "Já existe essa chave pix"
+        val badRequestException = StatusRuntimeException(Status.FAILED_PRECONDITION.withDescription(mensagem))
+
+        // acao
+        val httpResponse =
+            StatusRuntimeExceptionHandler().handle(request = requestGenerica, exception = badRequestException)
+
+        // validacao
+        with(httpResponse) {
+            assertEquals(HttpStatus.BAD_REQUEST.code, status.code)
+            assertNotNull(httpResponse.body())
+            assertEquals(mensagem, (httpResponse.body() as JsonError).message)
+        }
+    }
+
+    @Test
     fun `Deve retornar 422 quando a StatusException for Already_Exists`() {
 
         // cenario
