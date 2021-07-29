@@ -20,5 +20,5 @@ phases:
       - echo Build completed `date`
 
 artifacts:
-  files:
-    - build/libs/keyManagerRest-0.1-all.jar
+    files:
+      - build/libs/keyManagerRest-0.1-all.jar
